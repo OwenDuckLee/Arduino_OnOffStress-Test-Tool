@@ -8,3 +8,11 @@
 - modulize componets for maitain easily
 - high scalability for add new features
 - low cost under NTD 1000
+
+## Program Structure
+- lib/Grove_4-Digit_Display: Library for 4-Digit Display
+- Arduino_ONOFFTOOL.ino: the code for MCU to run main()
+- OnOffTool.cpp: actual implemented functions for OnOffTool Class
+- OnOffTool.h: header file for OnOffTool Class
+- config.h: define MCU pin configuration
+- debugLog.h: debug printf()
