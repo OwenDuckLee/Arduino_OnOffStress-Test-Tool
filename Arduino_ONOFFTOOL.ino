@@ -1,10 +1,10 @@
 /**
-*Copyright (c) 2024 DFI.FAE.TC.SW. All rights reserved.
+*Copyright (c) 2024 OwenLee All rights reserved.
 *
 *This source code is licensed under the MIT license found in the
 *License file in the root directory of this source tree.
 ***************************************************************************************************************************************************
-*Author: TSD AE Owen Lee
+*Author: Owen Lee
 *Date: 2024/4/29
 *HW  Version: 3
 *FW  Version: 3
@@ -20,30 +20,30 @@
 #include "OnOffTool.h"
 // #include "debugLog.h"
 
-OnOffTool DFITool(RELAY_DCONOFF_PIN, RELAY_ACONOFF_PIN, RELAY_PWBTN_PIN);
+OnOffTool tool(RELAY_DCONOFF_PIN, RELAY_ACONOFF_PIN, RELAY_PWBTN_PIN);
 // extern unsigned long timer0_millis;
 
 void setup()
 {
-	Serial.begin(115200);
+    Serial.begin(115200);
     Serial.setTimeout(TIMEOUT);
-    DFITool.init();
+    tool.init();
 
     // timer0_millis = -2988;
 }
 
 void loop()
 {
-    if(DFITool.isAutoRunTrigger()){
+    if(tool.isAutoRunTrigger()){
         //do auto mode stuff   
-            DFITool.runCmdTrigAutoMode();
+            tool.runCmdTrigAutoMode();
     }else{
         //do control mode stuff
         while(Serial.available()){
-            DFITool.cmdRead(Serial.readString());
-            DFITool.runMainCmdParser();
-            DFITool.runCmdTypeIdentifier();
-            DFITool.runCmdTrig();
+            tool.cmdRead(Serial.readString());
+            tool.runMainCmdParser();
+            tool.runCmdTypeIdentifier();
+            tool.runCmdTrig();
         }  
     }
 }   
